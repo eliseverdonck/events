@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Starry Night Cinema - Events</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .event-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .event-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+        }
+        .category-tag {
+            font-size: 0.75rem;
+            padding: 0.25rem 0.625rem;
+            border-radius: 9999px;
+            font-weight: 500;
+        }
+        /* New styles for filter pills */
+        .category-filter {
+            padding: 0.5rem 1.25rem;
+            border-radius: 9999px;
+            font-weight: 500;
+            border: 1px solid #d1d5db;
+            background-color: #fff;
+            color: #374151;
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+        .category-filter:hover {
+            background-color: #f3f4f6;
+        }
+        .category-filter.active {
+            background-color: #4f46e5;
+            color: white;
+            border-color: #4f46e5;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+
+    <!-- Header Section -->
+    <header class="bg-white shadow-sm">
+        <nav class="container mx-auto px-4 lg:px-6 py-4 flex justify-between items-center">
+             <div class="flex items-center space-x-8">
+                <div class="text-2xl font-bold text-gray-800">district</div>
+                <div class="hidden md:flex items-center space-x-6">
+                    <a href="#" class="text-gray-600 hover:text-indigo-600">Projects</a>
+                    <a href="#" class="text-indigo-600 font-semibold border-b-2 border-indigo-600 pb-1">Events</a>
+                    <a href="#" class="text-gray-600 hover:text-indigo-600">Regions</a>
+                </div>
+            </div>
+            <div class="flex items-center space-x-4">
+                 <a href="#" class="text-gray-600 hover:text-indigo-600 hidden sm:block">
+                    <i class="fa-solid fa-magnifying-glass"></i> Demo
+                </a>
+                <a href="#" class="px-4 py-2 text-sm font-medium text-white bg-indigo-600 border border-transparent rounded-md hover:bg-indigo-700">Register for a Free Trial</a>
+                <a href="#" class="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md hover:bg-gray-50">Download Product Guide</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <div class="bg-[#4338CA] text-white">
+        <div class="container mx-auto px-4 lg:px-6 py-12 md:py-16 flex flex-col md:flex-row justify-between items-center">
+            <div class="md:w-1/2 mb-8 md:mb-0">
+                <h1 class="text-4xl md:text-5xl font-bold mb-4">Starry Night Cinema</h1>
+                <p class="text-lg text-indigo-200">This summer, we're bringing Starry Night Cinema to our favourite local parks. Sit back, relax and watch your favourite stars light up the screen - and the night sky!</p>
+                <div class="mt-6 bg-black bg-opacity-20 p-4 rounded-lg inline-block">
+                    <p class="font-semibold">Closed for feedback</p>
+                    <p class="text-sm text-indigo-200">Closes in 4 days</p>
+                </div>
+            </div>
+            <div class="md:w-1/2 flex justify-center">
+                 <img src="https://images.unsplash.com/photo-1543501692-7d353956f183?q=80&w=2070&auto=format&fit=crop" onerror="this.onerror=null;this.src='https://placehold.co/600x400/4338CA/FFFFFF?text=Cinema+Night';" alt="People watching a movie outdoors" class="rounded-lg shadow-xl w-full max-w-md">
+            </div>
+        </div>
+        <div class="border-b border-indigo-500 border-opacity-50">
+            <div class="container mx-auto px-4 lg:px-6 flex space-x-8">
+                 <a href="#" class="py-3 text-gray-300 hover:text-white">Summary</a>
+                 <a href="#" class="py-3 text-gray-300 hover:text-white">Participate</a>
+                 <a href="#" class="py-3 text-white border-b-2 border-white font-semibold">Events</a>
+                 <a href="#" class="py-3 text-gray-300 hover:text-white">Updates</a>
+                 <a href="#" class="py-3 text-gray-300 hover:text-white">Timeline</a>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 lg:px-6 py-12">
+        <div class="mb-4">
+             <span class="text-sm text-gray-500">Projects / Starry Night Cinema</span>
+             <h2 class="text-3xl font-bold text-gray-800 mt-2">Attend an event</h2>
+        </div>
+
+        <!-- Search and Filter Controls -->
+        <div class="mb-8 p-4 bg-white rounded-lg shadow-md">
+            <div class="flex flex-col md:flex-row gap-4 items-center">
+                <div class="relative flex-grow w-full md:w-auto">
+                    <span class="absolute inset-y-0 left-0 flex items-center pl-3">
+                        <i class="fa-solid fa-magnifying-glass text-gray-400"></i>
+                    </span>
+                    <input type="text" id="searchInput" placeholder="Search for events by title..." class="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500">
+                </div>
+                <div class="flex items-center justify-center flex-wrap gap-2">
+                    <button class="category-filter active" data-category="all">All</button>
+                    <button class="category-filter" data-category="Family Friendly">Family Friendly</button>
+                    <button class="category-filter" data-category="Horror">Horror</button>
+                    <button class="category-filter" data-category="Comedy">Comedy</button>
+                    <button class="category-filter" data-category="Classic">Classic</button>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Event Cards Grid -->
+        <div id="eventGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Event cards will be dynamically inserted here -->
+        </div>
+        <p id="noResults" class="text-center text-gray-500 mt-8 hidden">No events found matching your criteria.</p>
+
+    </main>
+    
+    <!-- Footer -->
+    <footer class="bg-indigo-900 text-white mt-16">
+        <div class="container mx-auto px-4 lg:px-6 py-8">
+            <div class="flex flex-col md:flex-row justify-between items-center text-sm">
+                <div class="flex space-x-6 mb-4 md:mb-0">
+                    <a href="#" class="hover:text-indigo-300">About District Engage</a>
+                    <a href="#" class="hover:text-indigo-300">Terms & conditions</a>
+                    <a href="#" class="hover:text-indigo-300">Privacy policy</a>
+                    <a href="#" class="hover:text-indigo-300">Accessibility</a>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <a href="#" class="hover:text-indigo-300"><i class="fas fa-globe mr-1"></i> English</a>
+                    <span>Powered by District Engage</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+    <script>
+        const events = [
+            {
+                date: { day: '08', month: 'Jun' },
+                title: 'Premiere Event | Meadows Park',
+                description: 'Gather your loved ones for a starlit screening at Meadows Park. Family-friendly films, laughter, and memories under the open sky.',
+                datetime: 'Sat, 08 June 2024, 5:30PM',
+                location: 'Meadows Park',
+                category: 'Family Friendly',
+                categoryColor: 'bg-green-100 text-green-800',
+                image: 'https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?q=80&w=2070&auto=format&fit=crop'
+            },
+            {
+                date: { day: '13', month: 'Nov' },
+                title: 'Premiere Event | Eucalyptus Grove Park',
+                description: 'Unveil the darkness with our Horror Night. Spine-tingling thrills await at Eucalyptus Grove Park. Dare to be scared.',
+                datetime: 'Thu, 13 November 2025, 4:58PM',
+                location: 'Eucalyptus Grove Park',
+                category: 'Horror',
+                categoryColor: 'bg-red-100 text-red-800',
+                image: 'https://images.unsplash.com/photo-1569949381669-ecf31ae8e613?q=80&w=2070&auto=format&fit=crop'
+            },
+            {
+                date: { day: '22', month: 'Jul' },
+                title: 'Comedy Classics Night',
+                description: 'Laugh out loud with a collection of timeless comedy films. A perfect mid-summer treat for everyone.',
+                datetime: 'Mon, 22 July 2024, 7:00PM',
+                location: 'Sunset Valley Amphitheater',
+                category: 'Comedy',
+                categoryColor: 'bg-yellow-100 text-yellow-800',
+                image: 'https://images.unsplash.com/photo-1578736641334-45a7d883f33a?q=80&w=1935&auto=format&fit=crop'
+            },
+            {
+                date: { day: '05', month: 'Aug' },
+                title: 'Family Movie Marathon',
+                description: 'A whole day of animated adventures and family favorites. Bring a picnic and enjoy the fun!',
+                datetime: 'Mon, 05 August 2024, 11:00AM',
+                location: 'Pioneer Park',
+                category: 'Family Friendly',
+                categoryColor: 'bg-green-100 text-green-800',
+                image: 'https://images.unsplash.com/photo-1622295091219-a49683701200?q=80&w=2070&auto=format&fit=crop'
+            },
+            {
+                date: { day: '19', month: 'Oct' },
+                title: 'Vintage Cinema Showcase',
+                description: 'Step back in time with a screening of a black-and-white masterpiece from the golden age of cinema.',
+                datetime: 'Sat, 19 October 2024, 6:30PM',
+                location: 'Old Town Square',
+                category: 'Classic',
+                categoryColor: 'bg-gray-200 text-gray-800',
+                image: 'https://images.unsplash.com/photo-1517404215738-15263e9f9178?q=80&w=2070&auto=format&fit=crop'
+            },
+            {
+                date: { day: '31', month: 'Oct' },
+                title: 'Halloween Fright Fest',
+                description: 'Celebrate Halloween with a terrifying double feature. Costumes are highly encouraged!',
+                datetime: 'Thu, 31 October 2024, 8:00PM',
+                location: 'Haunted Hills Park',
+                category: 'Horror',
+                categoryColor: 'bg-red-100 text-red-800',
+                image: 'https://images.unsplash.com/photo-1505632911336-23dba3545ea2?q=80&w=1974&auto=format&fit=crop'
+            },
+        ];
+
+        const eventGrid = document.getElementById('eventGrid');
+        const searchInput = document.getElementById('searchInput');
+        const categoryFilters = document.querySelectorAll('.category-filter');
+        const noResults = document.getElementById('noResults');
+        let activeCategory = 'all';
+
+        // Function to create an event card
+        function createEventCard(event) {
+            return `
+                <div class="event-card bg-white rounded-lg shadow-md overflow-hidden flex flex-col" data-category="${event.category}" data-title="${event.title.toLowerCase()}">
+                    <div class="relative h-48 bg-cover bg-center" style="background-image: url('${event.image}')" onerror="this.style.backgroundImage='url(https://placehold.co/600x400/CCCCCC/FFFFFF?text=Event+Image)'">
+                         <div class="absolute top-4 left-4 bg-white text-center rounded-lg p-2 shadow-lg w-16">
+                            <span class="text-2xl font-bold text-indigo-600">${event.date.day}</span>
+                            <span class="text-sm font-semibold text-gray-700 uppercase">${event.date.month}</span>
+                        </div>
+                    </div>
+                    <div class="p-6 flex-grow flex flex-col">
+                        <div class="flex justify-between items-start mb-2">
+                             <h3 class="text-xl font-bold text-gray-800 flex-1 pr-2">${event.title}</h3>
+                             <span class="category-tag ${event.categoryColor}">${event.category}</span>
+                        </div>
+                        <p class="text-gray-600 mb-4 flex-grow">${event.description}</p>
+                        <div class="text-sm text-gray-500 space-y-2 mt-auto">
+                            <p><i class="fa-solid fa-calendar-alt w-5 text-center mr-2"></i>${event.datetime}</p>
+                            <p><i class="fa-solid fa-map-marker-alt w-5 text-center mr-2"></i>${event.location}</p>
+                        </div>
+                        <a href="#" class="mt-6 block w-full bg-indigo-600 text-white text-center font-semibold py-2 rounded-md hover:bg-indigo-700 transition-colors">View event</a>
+                    </div>
+                </div>
+            `;
+        }
+        
+        // Function to render events based on filters
+        function renderEvents() {
+            const searchTerm = searchInput.value.toLowerCase();
+            let visibleEventsCount = 0;
+            
+            eventGrid.innerHTML = ''; // Clear the grid first
+            
+            const filteredEvents = events.filter(event => {
+                const categoryMatch = activeCategory === 'all' || event.category === activeCategory;
+                const searchMatch = event.title.toLowerCase().includes(searchTerm) || event.description.toLowerCase().includes(searchTerm);
+                return categoryMatch && searchMatch;
+            });
+
+            if (filteredEvents.length > 0) {
+                 filteredEvents.forEach(event => {
+                    eventGrid.innerHTML += createEventCard(event);
+                });
+                noResults.classList.add('hidden');
+            } else {
+                noResults.classList.remove('hidden');
+            }
+        }
+
+        // Event listener for search input
+        searchInput.addEventListener('input', renderEvents);
+
+        // Event listener for category filters
+        categoryFilters.forEach(button => {
+            button.addEventListener('click', () => {
+                // Update active class
+                categoryFilters.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+                
+                // Update active category and re-render
+                activeCategory = button.dataset.category;
+                renderEvents();
+            });
+        });
+
+        // Initial render of all events
+        document.addEventListener('DOMContentLoaded', renderEvents);
+    </script>
+
+</body>
+</html>
